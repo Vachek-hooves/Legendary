@@ -149,7 +149,7 @@ const TabNavigator = () => {
       <Tab.Screen
         name="TabChronologyScreen"
         component={TabChronologyScreen}
-        options={{ tabBarLabel: 'Chronology' }}
+        options={{ tabBarLabel: 'moments' }}
       />
       <Tab.Screen
         name="TabTrainingScreen"
