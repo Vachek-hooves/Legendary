@@ -11,6 +11,7 @@ import {
   TabQuizScreen,
   TabTrainingScreen,
   TabUserScreen,
+  TabChronologyScreen,
 } from './screen/tab';
 import {
   StackFootballPlay,
@@ -27,6 +28,7 @@ import userIcon from './assets/icons/user.png';
 import footballIcon from './assets/icons/football.png';
 import quizIcon from './assets/icons/quiz.png';
 import trainingIcon from './assets/icons/training.png';
+import chronology from './assets/icons/chronology.png';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -39,7 +41,7 @@ const CustomTabBar = ({ state, descriptors, navigation }) => {
       end={{ x: 1, y: 0 }}
       style={{
         flexDirection: 'row',
-        height: 100,
+        height: 110,
         elevation: 8,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: -2 },
@@ -81,6 +83,8 @@ const CustomTabBar = ({ state, descriptors, navigation }) => {
               return quizIcon;
             case 'TabTrainingScreen':
               return trainingIcon;
+            case 'TabChronologyScreen':
+              return chronology;
             default:
               return null;
           }
@@ -141,6 +145,11 @@ const TabNavigator = () => {
         name="TabQuizScreen"
         component={TabQuizScreen}
         options={{ tabBarLabel: 'Quiz' }}
+      />
+      <Tab.Screen
+        name="TabChronologyScreen"
+        component={TabChronologyScreen}
+        options={{ tabBarLabel: 'Chronology' }}
       />
       <Tab.Screen
         name="TabTrainingScreen"
