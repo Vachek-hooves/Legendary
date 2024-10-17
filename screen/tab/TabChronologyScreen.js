@@ -1,7 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList, Image, TouchableOpacity, Modal, ScrollView, ImageBackground, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, FlatList, Image, TouchableOpacity, Modal, ScrollView, ImageBackground, SafeAreaView, Dimensions } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { moments } from '../../data/moments';
+
+const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 
 const TabChronologyScreen = () => {
   const [selectedMoment, setSelectedMoment] = React.useState(null);
@@ -46,22 +48,24 @@ const TabChronologyScreen = () => {
               <View style={styles.modalOverlay}>
                 <ScrollView style={styles.modalContainer}>
                   <Image source={selectedMoment.image} style={styles.modalImage} />
-                  <Text style={styles.modalHeader}>{selectedMoment.header}</Text>
-                  <Text style={styles.modalArticle}>{selectedMoment.article}</Text>
-                  <Text style={styles.modalMoreDetail}>{selectedMoment.moreDetail}</Text>
-                  <TouchableOpacity
-                    onPress={() => setSelectedMoment(null)}
-                    style={styles.buttonContainer}
-                  >
-                    <LinearGradient
-                      colors={['#FF1493', '#FF00FF', '#00FFFF']}
-                      start={{ x: 0, y: 0 }}
-                      end={{ x: 1, y: 0 }}
-                      style={styles.button}
+                  <View style={styles.modalContent}>
+                    <Text style={styles.modalHeader}>{selectedMoment.header}</Text>
+                    <Text style={styles.modalArticle}>{selectedMoment.article}</Text>
+                    <Text style={styles.modalMoreDetail}>{selectedMoment.moreDetail}</Text>
+                    <TouchableOpacity
+                      onPress={() => setSelectedMoment(null)}
+                      style={styles.buttonContainer}
                     >
-                      <Text style={styles.buttonText}>Close</Text>
-                    </LinearGradient>
-                  </TouchableOpacity>
+                      <LinearGradient
+                        colors={['#FF1493', '#FF00FF', '#00FFFF']}
+                        start={{ x: 0, y: 0 }}
+                        end={{ x: 1, y: 0 }}
+                        style={styles.button}
+                      >
+                        <Text style={styles.buttonText}>Close</Text>
+                      </LinearGradient>
+                    </TouchableOpacity>
+                  </View>
                 </ScrollView>
               </View>
             )}
@@ -124,7 +128,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: 400, // Increased by 60%
+    height: 240,
     borderRadius: 10,
   },
   header: {
@@ -138,17 +142,17 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.9)',
-    padding: 20,
-    marginTop: 50,
-    marginBottom: 50,
-    marginHorizontal: 20,
-    borderRadius: 10,
   },
   modalImage: {
     width: '100%',
-    height: 200,
-    borderRadius: 10,
+    height: SCREEN_HEIGHT*0.8,
+  },
+  modalContent: {
+    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+    padding: 20,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    marginTop: -20,
   },
   modalHeader: {
     fontSize: 24,
