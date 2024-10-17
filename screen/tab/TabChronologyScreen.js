@@ -1,5 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList, Image, TouchableOpacity, Modal, ScrollView, ImageBackground, SafeAreaView, Dimensions } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  Image,
+  TouchableOpacity,
+  Modal,
+  ScrollView,
+  ImageBackground,
+  SafeAreaView,
+  Dimensions,
+} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { moments } from '../../data/moments';
 
@@ -15,7 +27,10 @@ const TabChronologyScreen = () => {
         <View style={styles.dot} />
         <Text style={styles.year}>{new Date(item.date).getFullYear()}</Text>
       </View>
-      <TouchableOpacity style={styles.card} onPress={() => setSelectedMoment(item)}>
+      <TouchableOpacity
+        style={styles.card}
+        onPress={() => setSelectedMoment(item)}
+      >
         <Image source={item.image} style={styles.image} />
         <Text style={styles.header}>{item.header}</Text>
       </TouchableOpacity>
@@ -23,7 +38,7 @@ const TabChronologyScreen = () => {
   );
 
   return (
-    <ImageBackground 
+    <ImageBackground
       source={require('../../assets/image/bg/chronologybg.png')}
       style={styles.backgroundImage}
     >
@@ -32,6 +47,9 @@ const TabChronologyScreen = () => {
         style={styles.overlay}
       >
         <SafeAreaView style={styles.container}>
+          <View>
+            <Text style={styles.mainHeader}>22 Legendary Sports Moments</Text>
+          </View>
           <FlatList
             data={moments}
             renderItem={renderItem}
@@ -47,11 +65,20 @@ const TabChronologyScreen = () => {
             {selectedMoment && (
               <View style={styles.modalOverlay}>
                 <ScrollView style={styles.modalContainer}>
-                  <Image source={selectedMoment.image} style={styles.modalImage} />
+                  <Image
+                    source={selectedMoment.image}
+                    style={styles.modalImage}
+                  />
                   <View style={styles.modalContent}>
-                    <Text style={styles.modalHeader}>{selectedMoment.header}</Text>
-                    <Text style={styles.modalArticle}>{selectedMoment.article}</Text>
-                    <Text style={styles.modalMoreDetail}>{selectedMoment.moreDetail}</Text>
+                    <Text style={styles.modalHeader}>
+                      {selectedMoment.header}
+                    </Text>
+                    <Text style={styles.modalArticle}>
+                      {selectedMoment.article}
+                    </Text>
+                    <Text style={styles.modalMoreDetail}>
+                      {selectedMoment.moreDetail}
+                    </Text>
                     <TouchableOpacity
                       onPress={() => setSelectedMoment(null)}
                       style={styles.buttonContainer}
@@ -112,12 +139,20 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF00FF',
     marginTop: 5,
   },
+  mainHeader: {
+    marginTop: 5,
+    fontWeight: 'bold',
+    color: 'white',
+    fontSize: 32,
+    color: '#FF00FF',
+    textAlign: 'center',
+  },
   year: {
     marginTop: 5,
     fontWeight: 'bold',
     color: 'white',
     fontSize: 20,
-    color:'#FF00FF',
+    color: '#FF00FF',
   },
   card: {
     flex: 1,
@@ -147,7 +182,7 @@ const styles = StyleSheet.create({
   },
   modalImage: {
     width: '100%',
-    height: SCREEN_HEIGHT*0.8,
+    height: SCREEN_HEIGHT * 0.8,
   },
   modalContent: {
     backgroundColor: 'rgba(0, 0, 0, 0.9)',
