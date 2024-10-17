@@ -1,7 +1,6 @@
-import React,{useEffect} from 'react';
-import { View, Text, TouchableOpacity ,Platform,AppState,Image} from 'react-native';
+import React, { useEffect } from 'react';
+import { Text, TouchableOpacity, AppState, Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
@@ -15,11 +14,15 @@ import {
 } from './screen/tab';
 import {
   StackFootballPlay,
+  StackLegendarySportMoments,
   StackQuizLevelScreen,
   StackTrainingDetailScreen,
   StackTrainingProgramScreen,
 } from './screen/stack';
-import { playBackgroundMusic,resetPlayer } from './components/bgSound/setupPlayer';
+import {
+  playBackgroundMusic,
+  resetPlayer,
+} from './components/bgSound/setupPlayer';
 import userIcon from './assets/icons/user.png';
 import footballIcon from './assets/icons/football.png';
 import quizIcon from './assets/icons/quiz.png';
@@ -149,7 +152,6 @@ const TabNavigator = () => {
 };
 
 function App() {
-
   useEffect(() => {
     const initializePlayer = async () => {
       try {
@@ -161,7 +163,7 @@ function App() {
 
     initializePlayer();
 
-    const subscription = AppState.addEventListener('change', nextAppState => {
+    const subscription = AppState.addEventListener('change', (nextAppState) => {
       if (nextAppState === 'background' || nextAppState === 'inactive') {
         resetPlayer();
       } else if (nextAppState === 'active') {
@@ -203,6 +205,10 @@ function App() {
           <Stack.Screen
             name="StackTrainingProgramScreen"
             component={StackTrainingProgramScreen}
+          />
+          <Stack.Screen
+            name="StackLegendarySportMoments"
+            component={StackLegendarySportMoments}
           />
         </Stack.Navigator>
       </NavigationContainer>
