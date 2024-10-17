@@ -116,6 +116,8 @@ const styles = StyleSheet.create({
     marginTop: 5,
     fontWeight: 'bold',
     color: 'white',
+    fontSize: 20,
+    color:'#FF00FF',
   },
   card: {
     flex: 1,
