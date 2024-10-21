@@ -6,7 +6,7 @@ const SoundIcon = ({ isPlay }) => {
       style={[
         styles.harpContainer,
         {
-          backgroundColor: isPlay ? '#FF1493' : '#00FFFF',
+          backgroundColor: isPlay ? '#1e7600' : '#02909c',
           padding: 10,
           borderRadius: 50,
         },

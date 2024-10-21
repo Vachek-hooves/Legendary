@@ -24,39 +24,34 @@ const TabQuizScreen = ({ navigation }) => {
 
   return (
     <ImageBackground
-      source={require('../../assets/image/bg/quiz.png')}
+      source={require('../../assets/image/newBg/bg.png')}
       style={styles.backgroundImage}
     >
       <View style={styles.container}>
-        <LinearGradient
-          colors={['rgba(0,0,0,0.7)', 'rgba(0,0,0,0.3)']}
-          style={styles.overlay}
+        <SafeAreaView/>
+        <Text style={styles.title}>Choose a Sport</Text>
+        <ScrollView
+          contentContainerStyle={styles.scrollViewContent}
+          showsVerticalScrollIndicator={false}
         >
-            <SafeAreaView/>
-          <Text style={styles.title}>Choose a Sport</Text>
-          <ScrollView
-            contentContainerStyle={styles.scrollViewContent}
-            showsVerticalScrollIndicator={false}
-          >
-            {quizData.map((sport) => (
-              <TouchableOpacity
-                key={sport.id}
-                onPress={() => startQuiz(sport.id)}
-                style={[styles.sportButton, !sport.isActive && styles.inactiveButton]}
-                disabled={!sport.isActive}
+          {quizData.map((sport) => (
+            <TouchableOpacity
+              key={sport.id}
+              onPress={() => startQuiz(sport.id)}
+              style={[styles.sportButton, !sport.isActive && styles.inactiveButton]}
+              disabled={!sport.isActive}
+            >
+              <LinearGradient
+                colors={['#1e7600', '#02909c', '#181818']}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                style={styles.gradient}
               >
-                <LinearGradient
-                  colors={['#00FFFF', '#FF00FF', '#FF1493']}
-                  start={{ x: 0, y: 0 }}
-                  end={{ x: 1, y: 0 }}
-                  style={styles.gradient}
-                >
-                  <Text style={styles.sportButtonText}>{sport.sport}</Text>
-                </LinearGradient>
-              </TouchableOpacity>
-            ))}
-          </ScrollView>
-        </LinearGradient>
+                <Text style={styles.sportButtonText}>{sport.sport}</Text>
+              </LinearGradient>
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
       </View>
     </ImageBackground>
   );
@@ -84,6 +79,7 @@ const styles = StyleSheet.create({
     textShadowColor: 'rgba(0, 0, 0, 0.75)',
     textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 10,
+    textAlign: 'center',
   },
   scrollViewContent: {
     alignItems: 'center',
@@ -100,10 +96,10 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    opacity:0.7
+    opacity: 0.9
   },
   inactiveButton: {
-    opacity: 0.2,
+    opacity: 0.4,
   },
   gradient: {
     flex: 1,

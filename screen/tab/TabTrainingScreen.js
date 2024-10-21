@@ -24,7 +24,7 @@ const TabTrainingScreen = () => {
 
   return (
     <ImageBackground
-      source={require('../../assets/image/bg/training.png')}
+      source={require('../../assets/image/newBg/bg.png')}
       style={styles.backgroundImage}
       blurRadius={100}
     >   

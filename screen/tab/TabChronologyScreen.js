@@ -39,7 +39,7 @@ const TabChronologyScreen = () => {
 
   return (
     <ImageBackground
-      source={require('../../assets/image/bg/chronologybg.png')}
+      source={require('../../assets/image/newBg/bg.png')}
       style={styles.backgroundImage}
     >
       <LinearGradient
@@ -84,7 +84,7 @@ const TabChronologyScreen = () => {
                       style={styles.buttonContainer}
                     >
                       <LinearGradient
-                        colors={['#FF1493', '#FF00FF', '#00FFFF']}
+                        colors={['#1e7600', '#02909c', '#181818']}
                         start={{ x: 0, y: 0 }}
                         end={{ x: 1, y: 0 }}
                         style={styles.button}
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'white',
     fontSize: 32,
-    color: '#FF00FF',
+    color: '#1e7600',
     textAlign: 'center',
   },
   year: {
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'white',
     fontSize: 20,
-    color: '#FF00FF',
+    color: '#1e7600',
   },
   card: {
     flex: 1,
@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
   modalHeader: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#00FFFF',
+    color: '#02909c',
     marginVertical: 10,
   },
   modalArticle: {
@@ -203,9 +203,9 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   modalMoreDetail: {
-    fontSize: 14,
+    fontSize: 16,
     fontStyle: 'italic',
-    color: '#FF00FF',
+    color: '#02909c',
     marginBottom: 20,
   },
   buttonContainer: {

@@ -1,5 +1,12 @@
-import React, { useEffect } from 'react';
-import { Text, TouchableOpacity, AppState, Image } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import {
+  Text,
+  TouchableOpacity,
+  AppState,
+  Image,
+  Animated,
+  View,
+} from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
@@ -33,19 +40,24 @@ import chronology from './assets/icons/chronology.png';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
+const loaders = [
+  require('./assets/image/newLoaders/loader1.png'),
+  require('./assets/image/newLoaders/loader2.png'),
+];
+
 const CustomTabBar = ({ state, descriptors, navigation }) => {
   return (
     <LinearGradient
-      colors={['#00FFFF', '#FF00FF', '#FF1493']}
+      colors={['#1e7600', '#02909c', '#181818']}
       start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 0 }}
+      end={{ x: 1, y: 1 }}
       style={{
         flexDirection: 'row',
         height: 110,
         elevation: 8,
-        shadowColor: '#000',
+        shadowColor: '#00ff00',
         shadowOffset: { width: 0, height: -2 },
-        shadowOpacity: 0.1,
+        shadowOpacity: 0.3,
         shadowRadius: 4,
       }}
     >
@@ -106,12 +118,12 @@ const CustomTabBar = ({ state, descriptors, navigation }) => {
                 width: 40,
                 height: 40,
                 marginBottom: 2,
-                tintColor: isFocused ? '#ffffff' : 'rgba(255,255,255,0.6)',
+                tintColor: isFocused ? '#8cc41a' : '#ffffff',
               }}
             />
             <Text
               style={{
-                color: isFocused ? '#ffffff' : 'rgba(255,255,255,0.6)',
+                color: isFocused ? '#8cc41a' : '#ffffff',
                 fontWeight: 'bold',
                 fontSize: 12,
               }}
@@ -161,6 +173,9 @@ const TabNavigator = () => {
 };
 
 function App() {
+  const [currentLoader, setCurrentLoader] = useState(0);
+  const fadeAnim1 = useRef(new Animated.Value(1)).current;
+  const fadeAnim2 = useRef(new Animated.Value(0)).current;
   useEffect(() => {
     const initializePlayer = async () => {
       try {
@@ -186,6 +201,42 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    const animationTimeout = setTimeout(() => {
+      fadeToNextLoader();
+    }, 1500); // Start transition after 3 seconds
+
+    const navigationTimeout = setTimeout(() => {
+      navigateToMenu();
+    }, 4000);
+
+    return () => {
+      clearTimeout(animationTimeout);
+      clearTimeout(navigationTimeout);
+    };
+  }, []);
+
+  const fadeToNextLoader = () => {
+    Animated.parallel([
+      Animated.timing(fadeAnim1, {
+        toValue: 0,
+        duration: 1500,
+        useNativeDriver: true,
+      }),
+      Animated.timing(fadeAnim2, {
+        toValue: 1,
+        duration: 1500,
+        useNativeDriver: true,
+      }),
+    ]).start(() => {
+      setCurrentLoader(1);
+    });
+  };
+
+  const navigateToMenu = () => {
+    setCurrentLoader(2);
+  };
+
   return (
     <AppContextProvider>
       <NavigationContainer>
@@ -196,7 +247,32 @@ function App() {
             animationDuration: 1000,
           }}
         >
-          <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
+          {currentLoader < 2 ? (
+            <Stack.Screen name="Welcome" options={{ headerShown: false }}>
+              {() => (
+                <View style={{ flex: 1 }}>
+                  <Animated.Image
+                    source={loaders[0]}
+                    style={[
+                      { width: '100%', height: '100%', position: 'absolute' },
+                      { opacity: fadeAnim1 },
+                    ]}
+                  />
+                  <Animated.Image
+                    source={loaders[1]}
+                    style={[
+                      { width: '100%', height: '100%', position: 'absolute' },
+                      { opacity: fadeAnim2 },
+                    ]}
+                  />
+                </View>
+              )}
+            </Stack.Screen>
+          ) : (
+            <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
+            // <Stack.Screen name="TabNavigator" component={TabNavigator} />
+          )}
+          {/* <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} /> */}
           <Stack.Screen name="TabNavigator" component={TabNavigator} />
 
           <Stack.Screen

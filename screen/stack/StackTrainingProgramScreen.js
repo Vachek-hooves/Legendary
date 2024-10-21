@@ -51,7 +51,7 @@ const StackTrainingProgramScreen = ({ route }) => {
               style={styles.buttonContainer}
             >
               <LinearGradient
-                colors={['#FF1493', '#FF00FF', '#00FFFF']}
+                colors={['#1e7600', '#02909c', '#181818']}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
                 style={styles.button}
@@ -101,14 +101,14 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 10,
-    color: '#00FFFF',
+    color: '#1e7600',
   },
   sectionTitle: {
     fontSize: 18,
     fontWeight: 'bold',
     marginTop: 10,
     marginBottom: 5,
-    color: '#FF00FF',
+    color: '#02909c',
   },
   exerciseText: {
     fontSize: 16,

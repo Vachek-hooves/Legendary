@@ -35,7 +35,7 @@ const StackTrainingDetailScreen = ({ route }) => {
               style={styles.buttonContainer}
             >
               <LinearGradient
-                colors={['#00FFFF', '#FF00FF', '#FF1493']}
+                colors={['#1e7600', '#02909c', '#181818']}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
                 style={styles.button}
@@ -49,7 +49,7 @@ const StackTrainingDetailScreen = ({ route }) => {
               style={styles.buttonContainer}
             >
               <LinearGradient
-                colors={['#FF1493', '#FF00FF', '#00FFFF']}
+                colors={['#1e7600', '#02909c', '#181818']}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
                 style={styles.button}

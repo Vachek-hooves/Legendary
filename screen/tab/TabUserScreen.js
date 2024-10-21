@@ -59,36 +59,30 @@ const TabUserScreen = () => {
       <TextInput
         style={styles.input}
         placeholder="Name"
-        placeholderTextColor="#888"
+        placeholderTextColor="#00ff00"
         value={name}
         onChangeText={setName}
       />
       <View style={styles.genderContainer}>
-        <TouchableOpacity
-          style={[styles.genderButton, gender === 'male' && styles.selectedGender]}
-          onPress={() => setGender('male')}
-        >
-          <Text style={styles.genderText}>Male</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.genderButton, gender === 'female' && styles.selectedGender]}
-          onPress={() => setGender('female')}
-        >
-          <Text style={styles.genderText}>Female</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.genderButton, gender === 'skip' && styles.selectedGender]}
-          onPress={() => setGender('skip')}
-        >
-          <Text style={styles.genderText}>Skip</Text>
-        </TouchableOpacity>
+        {['male', 'female', 'skip'].map((option) => (
+          <TouchableOpacity
+            key={option}
+            style={[
+              styles.genderButton,
+              gender === option && styles.selectedGender
+            ]}
+            onPress={() => setGender(option)}
+          >
+            <Text style={styles.genderText}>{option}</Text>
+          </TouchableOpacity>
+        ))}
       </View>
       <TouchableOpacity style={styles.imageButton} onPress={pickImage}>
         <Text style={styles.buttonText}>Choose Profile Picture</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.saveButton} onPress={saveUserData}>
         <LinearGradient
-          colors={['#00FFFF', '#FF00FF', '#FF1493']}
+          colors={['#00ff00', '#808080', '#4682B4']}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
           style={styles.gradient}
@@ -118,19 +112,19 @@ const TabUserScreen = () => {
   );
 
   const backgroundImage = gender === 'female' 
-    ? require('../../assets/image/user/userShe.png')
+    ? require('../../assets/image/user/newShe.png')
     : gender === 'male'
-    ? require('../../assets/image/user/userHe.png')
-    : require('../../assets/image/bg/illuminatedArrow.jpg');
+    ? require('../../assets/image/user/newHe.png')
+    : require('../../assets/image/newBg/bg.png');
 
   return (
     <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
       <LinearGradient
-        colors={['rgba(0,0,0,0.7)', 'rgba(0,0,0,0.3)']}
+        colors={['rgba(0,255,0,0.0)', 'rgba(128,128,128,0.0)', 'rgba(70,130,180,0.0)']}
         style={styles.overlay}
       >
-        <SafeAreaView/>
-        <SoundControl/>
+        <SafeAreaView />
+        <SoundControl />
         <View style={styles.container}>
           {user && !isEditing ? renderUserInfo() : renderForm()}
         </View>
@@ -148,16 +142,16 @@ const styles = StyleSheet.create({
   },
   overlay: {
     flex: 1,
-    // justifyContent: 'center',
     alignItems: 'center',
-    // mpaddingTop:30
-    paddingTop:160
+    paddingTop: 160,
   },
   container: {
     width: '80%',
     padding: 20,
     borderRadius: 10,
-    backgroundColor: 'rgba(255,255,255,0.1)',
+    backgroundColor: 'rgba(70,130,180,0.1)',
+    borderColor: '#00ff00',
+    borderWidth: 1,
   },
   form: {
     alignItems: 'center',
@@ -165,12 +159,12 @@ const styles = StyleSheet.create({
   input: {
     width: '100%',
     height: 40,
-    borderColor: '#00FFFF',
+    borderColor: '#00ff00',
     borderWidth: 1,
     borderRadius: 5,
     marginBottom: 20,
     paddingHorizontal: 10,
-    color: 'white',
+    color: '#00ff00',
   },
   genderContainer: {
     flexDirection: 'row',
@@ -183,22 +177,22 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     borderWidth: 1,
-    borderColor: '#FF00FF',
+    borderColor: '#00ff00',
     alignItems: 'center',
     marginHorizontal: 5,
   },
   selectedGender: {
-    backgroundColor: 'rgba(255,0,255,0.3)',
+    backgroundColor: 'rgba(0,255,0,0.3)',
   },
   genderText: {
-    color: 'white',
+    color: '#00ff00',
   },
   imageButton: {
     width: '100%',
     padding: 10,
     borderRadius: 5,
     borderWidth: 1,
-    borderColor: '#FF1493',
+    borderColor: '#00ff00',
     alignItems: 'center',
     marginBottom: 20,
   },
@@ -212,7 +206,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonText: {
-    color: 'white',
+    color: '#00ff00',
     fontWeight: 'bold',
   },
   userInfo: {
@@ -223,16 +217,18 @@ const styles = StyleSheet.create({
     height: 150,
     borderRadius: 75,
     marginBottom: 20,
+    borderColor: '#00ff00',
+    borderWidth: 2,
   },
   userName: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#00FFFF',
+    color: '#00ff00',
     marginBottom: 10,
   },
   userGender: {
     fontSize: 18,
-    color: '#FF00FF',
+    color: '#00ff00',
     marginBottom: 20,
   },
   editButton: {

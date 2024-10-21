@@ -19,7 +19,7 @@ const TabFootballIntroScreen = ({ navigation }) => {
 
   return (
     <ImageBackground
-      source={require('../../assets/image/bg/footballBG.jpg')}
+      source={require('../../assets/image/newBg/bg.png')}
       style={styles.backgroundImage}
     >
       <View style={styles.container}>
@@ -38,7 +38,7 @@ const TabFootballIntroScreen = ({ navigation }) => {
               style={styles.playButton}
             >
               <LinearGradient
-                colors={['#00FFFF', '#FF00FF', '#FF1493']}
+                colors={['#1e7600', '#02909c', '#181818']}
                 start={{x: 0, y: 0}}
                 end={{x: 1, y: 0}}
                 style={styles.gradient}

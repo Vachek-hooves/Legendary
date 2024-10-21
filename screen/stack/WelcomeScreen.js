@@ -17,7 +17,7 @@ const WelcomeScreen = () => {
 
     const timer = setTimeout(() => {
       navigation.navigate('TabNavigator');
-    }, 1500);
+    }, 2500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -44,7 +44,7 @@ const WelcomeScreen = () => {
 
   return (
     <ImageBackground
-      source={require('../../assets/image/bg/welcome.png')}
+      source={require('../../assets/image/newBg/bg.png')}
       style={styles.background}
     >
       <Animated.View
@@ -88,15 +88,15 @@ const styles = StyleSheet.create({
     textShadowRadius: 5,
   },
   legendaryText: {
-    color: '#ff00ff', // Neon pink
-    textShadowColor: '#ff00ff',
+    color: '#1e7600', // Neon pink
+    textShadowColor: '#1e7600',
   },
   sportsText: {
-    color: '#00ffff', // Neon cyan
-    textShadowColor: '#00ffff',
+    color: '#02909c', // Neon cyan
+    textShadowColor: '#02909c',
   },
   momentsText: {
-    color: '#ffff00', // Neon yellow
-    textShadowColor: '#ffff00',
+    color: '#1e7600', // Neon yellow
+    textShadowColor: '#1e7600',
   },
 });

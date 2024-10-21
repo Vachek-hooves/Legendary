@@ -81,7 +81,7 @@ const StackQuizLevelScreen = ({ route, navigation }) => {
         ? ['#00FF00', '#00CC00', '#009900'] // Green neon for correct
         : ['#FF0000', '#CC0000', '#990000']; // Red neon for incorrect
     }
-    return ['#00FFFF', '#FF00FF', '#FF1493']; // Default neon colors
+    return ['#1e7600', '#02909c', '#181818']; // Default neon colors
   };
 
   if (showResult) {
@@ -110,7 +110,7 @@ const StackQuizLevelScreen = ({ route, navigation }) => {
             )}
             <TouchableOpacity onPress={restartQuiz} style={styles.button}>
               <LinearGradient
-                colors={['#00FFFF', '#FF00FF', '#FF1493']}
+                colors={['#1e7600', '#02909c', '#181818']}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
                 style={styles.gradient}
@@ -120,7 +120,7 @@ const StackQuizLevelScreen = ({ route, navigation }) => {
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.goBack()} style={styles.button}>
               <LinearGradient
-                colors={['#00FFFF', '#FF00FF', '#FF1493']}
+                colors={['#1e7600', '#02909c', '#181818']}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
                 style={styles.gradient}
@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: '100%',
     textAlign: 'center',
-    color: '#FF1493',
+    color: 'white',
     fontWeight: 'bold',
     fontSize: 18,
     lineHeight: 20,
@@ -278,12 +278,12 @@ const styles = StyleSheet.create({
   },
   adviceText: {
     fontSize: 18,
-    color: '#FF00FF',
+    color: '#02909c',
     marginBottom: 20,
     textAlign: 'center',
     padding: 10,
     borderWidth: 1,
-    borderColor: '#FF00FF',
+    borderColor: '#02909c',
     borderRadius: 10,
   },
 });
