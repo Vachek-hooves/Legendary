@@ -87,7 +87,7 @@ const StackQuizLevelScreen = ({ route, navigation }) => {
   if (showResult) {
     return (
       <ImageBackground
-        source={require('../../assets/image/bg/illuminatedArrow.jpg')}
+        source={require('../../assets/image/newBg/bg.png')}
         style={styles.backgroundImage}
       >
         <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -136,7 +136,7 @@ const StackQuizLevelScreen = ({ route, navigation }) => {
 
   return (
     <ImageBackground
-      source={require('../../assets/image/bg/illuminatedArrow.jpg')}
+      source={require('../../assets/image/newBg/bg.png')}
       style={styles.backgroundImage}
     >
       <View style={styles.container}>
